@@ -13,6 +13,9 @@ services:
     ports:
       - 80:80
       - 443:443
+    commands:
+      - "--providers.docker=true"
+      - "--providers.docker.expsodedBydefault=false"  
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`proxy.vanvaerenbergh.online`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"

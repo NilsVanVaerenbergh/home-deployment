@@ -1,9 +1,4 @@
 #Traefik.yml V2
-# Docker configuration backend
-providers:
-  docker:
-    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)"
-    exposedByDefault: false
 ## Static configuration
 entryPoints:
   web:
