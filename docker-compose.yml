@@ -22,7 +22,7 @@ services:
       - "traefik.http.routers.dashboard.rule=Host(`proxy.vanvaerenbergh.online`)"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users={TRAEFIK_USER}:{TRAEFIK_PASSWORD}"
+      - "traefik.http.middlewares.auth.basicauth.users=${TRAEFIK_USER}:${TRAEFIK_PASSWORD}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
   cloudflare-tunnel:
