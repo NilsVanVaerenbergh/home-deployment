@@ -3,6 +3,14 @@
 providers:
   docker:
     defaultRule: "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)"
+    exposedByDefault: false
+## Static configuration
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
 # API and dashboard configuration
 api:
-  insecure: true
+  dashboard: true
+  
