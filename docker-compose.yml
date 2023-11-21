@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - frontend
-      - reverseproxy
+      - proxy
+      - traefik-net
     depends_on:
       - cloudflare-tunnel
     restart: always
@@ -33,4 +34,8 @@ services:
 networks:
   frontend:
     external: true
-  reverseproxy:
+  traefik-net:
+        driver: overlay
+        ipam:
+            driver: default
+  proxy:
