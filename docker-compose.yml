@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  traefik:
+    build: 
+      context: ./traefik/
+      dockerfile: Dockerfile
+    networks:
+      - frontend
+      - reverseproxy
+    depends_on:
+      - cloudflare-tunnel
+    restart: always
+  cloudflare-tunnel:
+    container_name: cloudflare-tunnel
+    image: cloudflare/cloudflared:2023.8.2
+    networks:
+      - frontend
+    restart: unless-stopped
+    environment:
+     - TUNNEL_TOKEN=$TUNNEL_TOKEN
+    command: tunnel --no-autoupdate run
+networks:
+  frontend:
+    external: true
+  reverseproxy:
