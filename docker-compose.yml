@@ -15,6 +15,7 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.expsodedBydefault=false"  
+      - "--providers.docker.network=proxy"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`proxy.vanvaerenbergh.online`)"
